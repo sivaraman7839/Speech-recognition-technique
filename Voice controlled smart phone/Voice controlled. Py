@@ -1,0 +1,40 @@
+import speech_recognition as sr
+import pyttsx3
+from commands import execute_command
+
+class VoiceAssistant:
+    def __init__(self, name="Assistant"):
+        self.name = name
+        self.recognizer = sr.Recognizer()
+        self.tts_engine = pyttsx3.init()
+        self.tts_engine.setProperty('rate', 150)
+
+    def speak(self, text):
+        print(f"{self.name}: {text}")
+        self.tts_engine.say(text)
+        self.tts_engine.runAndWait()
+
+    def listen(self):
+        with sr.Microphone() as source:
+            print("Listening...")
+            audio = self.recognizer.listen(source)
+
+            try:
+                command = self.recognizer.recognize_google(audio)
+                print(f"You said: {command}")
+                return command.lower()
+            except sr.UnknownValueError:
+                self.speak("Sorry, I didn’t catch that.")
+            except sr.RequestError:
+                self.speak("Speech service is unavailable.")
+            return ""
+
+    def start(self):
+        self.speak("Hello, how can I help you?")
+        while True:
+            command = self.listen()
+            if "exit" in command or "stop" in command:
+                self.speak("Goodbye!")
+                break
+            response = execute_command(command)
+            self.speak(response)
