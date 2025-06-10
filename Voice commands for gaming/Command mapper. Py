@@ -1,0 +1,28 @@
+import pyautogui
+import time
+
+command_actions = {
+    "jump": lambda: pyautogui.press("space"),
+    "crouch": lambda: pyautogui.press("ctrl"),
+    "reload": lambda: pyautogui.press("r"),
+    "shoot": lambda: pyautogui.press("left"),
+    "sprint": lambda: pyautogui.keyDown("shift"),
+    "stop sprinting": lambda: pyautogui.keyUp("shift"),
+    "move forward": lambda: press_for("w", 0.5),
+    "move back": lambda: press_for("s", 0.5),
+    "move left": lambda: press_for("a", 0.5),
+    "move right": lambda: press_for("d", 0.5)
+}
+
+def press_for(key, duration):
+    pyautogui.keyDown(key)
+    time.sleep(duration)
+    pyautogui.keyUp(key)
+
+def handle_command(command):
+    for key in command_actions:
+        if key in command:
+            print(f"Executing: {key}")
+            command_actions[key]()
+            return
+    print("Command not recognized.")
