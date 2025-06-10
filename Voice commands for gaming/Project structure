@@ -1,0 +1,7 @@
+voice-gaming-controller/
+│
+├── main.py                # Entry point
+├── voice_control.py       # Handles voice recognition
+├── command_mapper.py      # Maps commands to actions
+├── README.md              # GitHub documentation
+├── requirements.txt       # Python dependencies
