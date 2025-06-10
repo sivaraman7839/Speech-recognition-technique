@@ -1,0 +1,7 @@
+voice-smartphone-assistant/
+│
+├── main.py                # Entry point
+├── voice_assistant.py     # Core assistant logic
+├── commands.py            # Simulated phone commands
+├── README.md              # GitHub documentation
+├── requirements.txt       # Dependencies
