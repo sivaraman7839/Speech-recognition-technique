@@ -1,0 +1,10 @@
+virtual-customer-support/
+│
+├── app.py                 # Main Flask app
+├── chatbot.py             # Chatbot logic module
+├── templates/
+│   └── index.html         # Frontend chat UI
+├── static/
+│   └── style.css          # Basic CSS styling
+├── README.md              # Project overview for GitHub
+└── requirements.txt       # Python dependencies
